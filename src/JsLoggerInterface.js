@@ -1,16 +1,16 @@
 "use strict";
 
 /**
- * @class LoggerInterface
+ * @class JsLoggerInterface
  */
-class LoggerInterface {
+class JsLoggerInterface {
     constructor(options = {}) {
         /**
          *
          * @type {{trace: string, debug: string, info: string, warn: string, error: string, fatal: string}}
          * @private
          */
-        this._levels = LoggerInterface.levels();
+        this._levels = JsLoggerInterface.levels();
         this._options = require('extends').extends(
             {level: this._levels.debug,},
             options
@@ -35,7 +35,7 @@ class LoggerInterface {
     /**
      * @public
      * @param {String} message
-     * @return {LoggerInterface}
+     * @return {JsLoggerInterface}
      */
     trace(message) {
         return this.log(message, this._levels.trace);
@@ -44,7 +44,7 @@ class LoggerInterface {
     /**
      * @public
      * @param {String} message
-     * @return {LoggerInterface}
+     * @return {JsLoggerInterface}
      */
     debug(message) {
         return this.log(message, this._levels.debug);
@@ -53,7 +53,7 @@ class LoggerInterface {
     /**
      * @public
      * @param {String} message
-     * @return {LoggerInterface}
+     * @return {JsLoggerInterface}
      */
     info(message) {
         return this.log(message, this._levels.info);
@@ -62,7 +62,7 @@ class LoggerInterface {
     /**
      * @public
      * @param {String} message
-     * @return {LoggerInterface}
+     * @return {JsLoggerInterface}
      */
     warn(message) {
         return this.log(message, this._levels.warn);
@@ -71,7 +71,7 @@ class LoggerInterface {
     /**
      * @public
      * @param {String} message
-     * @return {LoggerInterface}
+     * @return {JsLoggerInterface}
      */
     error(message) {
         return this.log(message, this._levels.error);
@@ -80,7 +80,7 @@ class LoggerInterface {
     /**
      * @public
      * @param {String} message
-     * @return {LoggerInterface}
+     * @return {JsLoggerInterface}
      */
     fatal(message) {
         return this.log(message, this._levels.fatal);
@@ -91,7 +91,7 @@ class LoggerInterface {
      * @param {String} level
      * @param {String} message
      * @abstract
-     * @return {LoggerInterface}
+     * @return {JsLoggerInterface}
      * @public
      */
     log(message, level = this._options.level) {

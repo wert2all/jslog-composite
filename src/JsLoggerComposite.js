@@ -1,21 +1,21 @@
 "use strict";
 
 /**
- * @extends LoggerInterface
+ * @extends JsLoggerInterface
  * @class JsLoggerComposite
  */
-class JsLoggerComposite extends LoggerInterface {
+class JsLoggerComposite extends JsLoggerInterface {
 
     /**
      *
      * @constructor
-     * @param {LoggerInterface[]} loggers
+     * @param {JsLoggerInterface[]} loggers
      */
     constructor(loggers = []) {
         super();
         /**
          *
-         * @type {LoggerInterface[]}
+         * @type {JsLoggerInterface[]}
          * @private
          */
         this._children = [];
@@ -24,7 +24,7 @@ class JsLoggerComposite extends LoggerInterface {
 
     /**
      * @public
-     * @param {LoggerInterface} logger
+     * @param {JsLoggerInterface} logger
      * @return {JsLoggerComposite}
      */
     append(logger) {
@@ -32,7 +32,7 @@ class JsLoggerComposite extends LoggerInterface {
         return this;
     }
 
-    log(message, level = LoggerInterface.levels().debug) {
+    log(message, level = JsLoggerInterface.levels().debug) {
         this._children.forEach(logger => logger.log(message, level));
         return this;
     }
