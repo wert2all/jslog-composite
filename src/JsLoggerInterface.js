@@ -11,7 +11,7 @@ class JsLoggerInterface {
          * @private
          */
         this._levels = JsLoggerInterface.levels();
-        this._options = require('extends').extends(
+        this._options = Object.assign(
             {level: this._levels.debug,},
             options
         );
@@ -98,3 +98,5 @@ class JsLoggerInterface {
         return this;
     }
 }
+
+module.exports = JsLoggerInterface;

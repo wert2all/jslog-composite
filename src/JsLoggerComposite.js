@@ -4,6 +4,8 @@
  * @extends JsLoggerInterface
  * @class JsLoggerComposite
  */
+const JsLoggerInterface = require('./JsLoggerInterface');
+
 class JsLoggerComposite extends JsLoggerInterface {
 
     /**
