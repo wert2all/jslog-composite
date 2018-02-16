@@ -10,26 +10,22 @@ class JsLoggerFileAdapter extends JsLoggerInterface {
 
     /**
      * @constructor
-     * @param {{filename: string, level: string}} options
+     * @param {{logFilePath: string, level: string}} options
      */
     constructor(options = {}) {
-        options = Object.assign({
-            filename: false,
-            level: JsLoggerInterface.levels().debug,
-        }, options);
-        super(options);
-        const log4js = require('log4js');
-        log4js.configure({
-            appenders: {default: {type: 'file', filename: this._options.filename}},
-            categories: {default: {appenders: ['default'], level: this._options.level}}
-        });
-        this._logger = log4js.getLogger('default');
+        super(
+            Object.assign({
+                    level: JsLoggerInterface.levels().debug,
+                    logFilePath: false,
+                    timestampFormat: 'YYYY-MM-DD HH:mm:ss.SSS',
+                },
+                options
+            )
+        );
 
-        this._methodList = {};
-        Object.keys(JsLoggerInterface.levels())
-            .map(level => {
-                this._methodList[level] = new Function('message', 'this._logger.' + level + '(message) ;').bind(this);
-            });
+        this._logger = require('simple-node-logger').createSimpleFileLogger(this._options);
+        this._logger.setLevel(this._options.level);
+        this._methodList = this._generateMethods();
     }
 
     /**
@@ -37,9 +33,26 @@ class JsLoggerFileAdapter extends JsLoggerInterface {
      */
     log(message, level) {
         if (this._methodList.hasOwnProperty(level)) {
+            this._logger.setLevel(level);
             this._methodList[level](message);
         }
         return this;
+    }
+
+    /**
+     *
+     * @return {*}
+     * @private
+     */
+    _generateMethods() {
+        const _methodList = {};
+        Object.keys(JsLoggerInterface.levels())
+            .map(level => {
+                _methodList[level] = new Function('message', 'this.' + level + '(message) ;')
+                    .bind(this._logger);
+            });
+
+        return _methodList;
     }
 }
 

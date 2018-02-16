@@ -3,10 +3,10 @@
 const JsLoggerComposite = require('../src/JsLoggerComposite');
 const JsLoggerFileAdapter = require('../src/Adapters/JsLoggerFileAdapter');
 
-const logger = new JsLoggerComposite();
-const fileLoggerTMP = new JsLoggerFileAdapter({filename: 'tmp.log'});
-const fileLoggerDebug = new JsLoggerFileAdapter({filename: 'debug.log'});
+const logger = new JsLoggerComposite([
+    new JsLoggerFileAdapter({logFilePath: 'tmp.log'}),
+    new JsLoggerFileAdapter({logFilePath: 'debug.log'}),
+]);
 
-logger.append(fileLoggerTMP)
-    .append(fileLoggerDebug)
-    .error('test ERROR');
+logger.error('this is error message.')
+    .debug('this is debug message');
