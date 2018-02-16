@@ -1,0 +1,18 @@
+{
+    "name": "jslog-composite",
+    "version": "1.0.0",
+    "description": "Composite for javascript loggers",
+    "main": "index.js",
+    "author": "wert2all",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:wert2all/jslog-composite.git"
+    },
+    "bugs": {
+        "url": "https://github.com/wert2all/jslog-composite/issues"
+    },
+    "engines": {
+        "node": ">=6.0"
+    }
+}
