@@ -13,6 +13,7 @@ gulp.task('test:exec:static', () => {
     // Otherwise, the task may end before the stream has finished.
     return gulp.src(
         [
+            '**/*.js',
             '*.js'
         ])
     // eslint() attaches the lint output to the "eslint" property
