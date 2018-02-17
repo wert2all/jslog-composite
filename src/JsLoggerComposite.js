@@ -35,7 +35,15 @@ class JsLoggerComposite extends JsLoggerInterface {
     }
 
     log(message, level = JsLoggerInterface.levels().debug) {
-        this._children.forEach(logger => logger.log(message, level));
+        Promise
+            .all(
+                this._children.map(
+                    logger => new Promise(
+                        resole => resole(logger.log(message, level))
+                    )
+                )
+            )
+            .catch(err => err);
         return this;
     }
 }
