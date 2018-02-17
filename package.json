@@ -2,7 +2,7 @@
     "name": "jslog-composite",
     "version": "1.0.0",
     "description": "Composite for javascript loggers",
-    "main": "index.js",
+    "main": "src/JsLoggerComposite.js",
     "author": "wert2all",
     "license": "MIT",
     "repository": {
@@ -16,9 +16,12 @@
         "node": ">=6.0"
     },
     "devDependencies": {
+        "eslint": "^4.17.0",
         "gulp": "^4.0.0",
         "gulp-cli": "^2.0.1",
         "gulp-eslint": "^4.0.2"
     },
-    "dependencies": {}
+    "dependencies": {
+        "simple-node-logger": "^0.93.37"
+    }
 }
