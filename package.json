@@ -1,6 +1,6 @@
 {
     "name": "jslog-composite",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Composite for javascript loggers",
     "main": "src/JsLoggerComposite.js",
     "author": "wert2all",
@@ -16,13 +16,22 @@
         "node": ">=6.0"
     },
     "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "del": "^3.0.0",
         "eslint": "^4.17.0",
         "gulp": "^4.0.0",
+        "gulp-babel": "^7.0.1",
         "gulp-cli": "^2.0.1",
-        "gulp-eslint": "^4.0.2"
+        "gulp-concat": "^2.6.1",
+        "gulp-eslint": "^4.0.2",
+        "gulp-minify-fork": "^2.1.1"
     },
     "dependencies": {
         "simple-node-logger": "^0.93.37",
         "winston-loggly-bulk": "^2.0.2"
+    },
+    "scripts": {
+        "prepublish": "gulp build"
     }
 }
