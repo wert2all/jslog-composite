@@ -23,7 +23,7 @@ gulp.task('test:check', (cb) => cb());
 gulp.task('test:exec:acceptance', cb => cb());
 gulp.task('test:exec:unit', (cb) => cb());
 gulp.task('test:exec:static', () =>
-    gulp.src(['**/*.js', '*.js'])
+    gulp.src(['**/*.js', '*.js', '!dist/**'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError()));
