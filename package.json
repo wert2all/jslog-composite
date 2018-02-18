@@ -1,6 +1,6 @@
 {
     "name": "jslog-composite",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Composite for javascript loggers",
     "main": "src/JsLoggerComposite.js",
     "author": "wert2all",
@@ -33,5 +33,11 @@
     },
     "scripts": {
         "prepublish": "gulp build"
-    }
+    },
+    "files": [
+        "src/",
+        "dist/",
+        "LICENSE",
+        "README.md"
+    ]
 }
